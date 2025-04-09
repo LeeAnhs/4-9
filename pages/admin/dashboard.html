@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Admin Dashboard</title>
+        <link rel="stylesheet" href="../../assets/css/dashboard.css" />
+    </head>
+    <body>
+        <div class="sidebar">
+            <h2>Admin Dashboard</h2>
+            <a href="">Quản lý lịch</a>
+            <a href="../admin/services.html">Quản lý dịch vụ</a>
+            <a href="../../index.html">Trang chủ</a>
+            <a href="http://127.0.0.1:5500/pages/auth/login.html" class="logout"
+                >Đăng xuất</a
+            >
+        </div>
+        <div class="content">
+            <h2>Thống kê lịch tập</h2>
+            <div class="stats">
+                <div class="stat-box">
+                    Tổng số lịch Gym <br />
+                    <strong>0</strong>
+                </div>
+                <div class="stat-box">
+                    Tổng số lịch Yoga <br />
+                    <strong>0</strong>
+                </div>
+                <div class="stat-box">
+                    Tổng số lịch Zumba <br />
+                    <strong>0</strong>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="classChart"></canvas>
+            </div>
+            <div class="filter-container">
+                <label for="class">Lớp học</label>
+                <select id="class">
+                    <option value="all">Tất cả</option>
+                    <option value="gym">Gym</option>
+                    <option value="yoga">Yoga</option>
+                    <option value="zumba">Zumba</option>
+                </select>
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Tìm theo email" />
+                <label for="date">Ngày</label>
+                <input type="date" id="date" />
+                <button class="filter-btn">Lọc</button>
+            </div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Lớp học</th>
+                            <th>Ngày tập</th>
+                            <th>Khung giờ</th>
+                            <th>Họ tên</th>
+                            <th>Email</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+        <script></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="../../assets/js/dashboard.js"></script>
+    </body>
+</html>

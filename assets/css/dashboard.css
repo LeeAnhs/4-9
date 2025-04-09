@@ -1,0 +1,159 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    height: fit-content;
+}
+.chart-container {
+    height: 300px; 
+    margin: auto;
+    position: relative;
+}
+.sidebar {
+    width: 250px;
+    background: #1F2937;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    border-radius: 4px;
+}
+.sidebar a:hover {
+    background: #2c2f33;
+}
+.sidebar .logout {
+    color: red;
+}
+.content {
+    flex: 1;
+    padding: 20px;
+    background: #f4f4f4;
+}
+.stats {
+    display: flex;
+    gap: 20px;
+}
+.stat-box {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    flex: 1;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.chart-container {
+    margin-top: 20px;
+    background: white;
+    padding: 20px;
+    height: 60vh;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.filter-container {
+    background: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.filter-container label {
+    font-weight: bold;
+}
+.filter-container select,
+.filter-container input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    flex: 1;
+}
+.table-container {
+    margin-top: 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+table,
+th,
+td {
+    border: 1px solid #ddd;
+}
+th,
+td {
+    padding: 10px;
+    text-align: left;
+}
+th {
+    background: #f4f4f4;
+}
+.filter-btn{
+    background-color: skyblue;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    
+}
+@media (max-width: 768px) {
+    .filter-container {
+        flex-direction: column;
+    }
+    body {
+        height: 140vh;
+    }
+    .stats {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .filter-container {
+        flex-direction: column;
+    }
+    .content {
+        padding: 10px;
+    }
+    .sidebar {
+        width: 100%;
+        position: relative;
+    }
+    body {
+        flex-direction: column;
+        height: auto;
+    }
+    .stats {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .chart-container {
+        height: 40vh;
+    }
+    .table-container {
+        overflow-x: auto;
+    }
+    table {
+        font-size: 14px;
+    }
+    th,
+    td {
+        padding: 5px;
+    }
+}

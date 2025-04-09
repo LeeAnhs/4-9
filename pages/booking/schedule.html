@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>GYM MANAGEMENT</title>
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f4f4f4;
+            }
+
+            .navbar {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background-color: #1f2937;
+                color: #fff;
+                padding: 20px 20px;
+            }
+
+            .navbar-left {
+                font-size: 18px;
+                font-weight: bold;
+            }
+
+            .navbar-right a {
+                color: #fff;
+                text-decoration: none;
+                margin-left: 20px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            .header-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+                margin: 0;
+            }
+
+            .new-schedule-btn {
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            .new-schedule-btn:hover {
+                background-color: #0056b3;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                background-color: #fff;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+                border-radius: 5px;
+            }
+
+            th,
+            td {
+                padding: 10px;
+                border-bottom: 1px solid #ddd;
+                text-align: left;
+            }
+
+            th {
+                background-color: #f4f4f4;
+            }
+            .popup {
+                display: none;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: white;
+                padding: 30px;
+                border-radius: 5px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+                width: 300px;
+            }
+
+            .popup-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 999;
+            }
+
+            .close-btn {
+                position: absolute;
+                top: 1px;
+                right: 10px;
+                cursor: pointer;
+                font-size: 20px;
+            }
+
+            .popup form {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .popup input {
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                margin-bottom: 10px;
+            }
+            .popup select {
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                margin-bottom: 10px;
+            }
+
+            .popup button[type="submit"] {
+                background-color: #007bff;
+                color: white;
+                border: none;
+                padding: 10px;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            .edit-btn,
+            .delete-btn {
+                padding: 5px 10px;
+                margin: 0 5px;
+                border: none;
+                border-radius: 3px;
+                cursor: pointer;
+            }
+
+            .edit-btn {
+                background-color: #ffc107;
+            }
+
+            .delete-btn {
+                background-color: #dc3545;
+                color: white;
+            }
+            .delete-popup {
+                text-align: center;
+            }
+            .delete-actions {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+                margin-top: 20px;
+            }
+
+            #confirm-delete {
+                background-color: #dc3545;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            #cancel-delete {
+                background-color: #6c757d;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            @media (max-width: 480px) {
+                .navbar-right {
+                    margin-top: 10px;
+                }
+
+                .navbar-right a {
+                    display: block;
+                    margin: 5px;
+                }
+
+                .container {
+                    padding: 10px;
+                }
+
+                .new-schedule-btn {
+                    width: 100%;
+                    text-align: center;
+                    font-size: 14px;
+                    padding: 10px;
+                }
+
+                table {
+                    display: block;
+                    overflow-x: auto;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="navbar-left">GYM MANAGEMENT</div>
+            <div class="navbar-right">
+                <a href="http://127.0.0.1:5500/index.html">Trang chủ</a>
+                <a href="#">Lịch tập</a>
+            </div>
+        </nav>
+        <div class="popup-overlay"></div>
+        <div class="popup">
+            <span class="close-btn">&times;</span>
+            <form id="schedule-form">
+                <select name="class" id="">
+                    <option value="GYM">GYM</option>
+                    <option value="Zumba">Zumba</option>
+                    <option value="Yoga">Yoga</option>
+                </select>
+                <input type="date" placeholder="Ngày tập" />
+                <input type="time" placeholder="Khung giờ" />
+                <input type="text" placeholder="Họ tên" />
+                <input type="email" placeholder="Email" />
+                <button type="submit">Thêm lịch tập</button>
+            </form>
+        </div>
+        <div class="edit-popup popup">
+            <span class="close-btn">&times;</span>
+            <form id="edit-form">
+                <select name="class" id="edit-class">
+                    <option value="GYM">GYM</option>
+                    <option value="Zumba">Zumba</option>
+                    <option value="Yoga">Yoga</option>
+                </select>
+                <input type="date" id="edit-date" />
+                <input type="time" id="edit-time" />
+                <input type="text" id="edit-name" placeholder="Họ tên" />
+                <input type="email" id="edit-email" placeholder="Email" />
+                <button type="submit">Cập nhật</button>
+            </form>
+        </div>
+
+        <div class="delete-popup popup">
+            <span class="close-btn">&times;</span>
+            <h3>Xác nhận xóa</h3>
+            <p>Bạn có chắc chắn muốn xóa lịch tập này?</p>
+            <div class="delete-actions">
+                <button id="confirm-delete">Xóa</button>
+                <button id="cancel-delete">Hủy</button>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="header-container">
+                <h1>Quản lý lịch tập</h1>
+                <button class="new-schedule-btn">Đặt lịch mới</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Lớp học</th>
+                        <th>Ngày tập</th>
+                        <th>Khung giờ</th>
+                        <th>Họ tên</th>
+                        <th>Email</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <script src="../../assets/js/booking.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    </body>
+</html>
