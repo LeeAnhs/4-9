@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-
     const ClassType = {
         GYM: 1,
         ZUMBA: 2,
@@ -133,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
             Swal.fire({
                 position: "top-center",
                 icon: "error",
-                title: "Tên chỉ được phép nhập chữ",
+                title: "Vui lòng nhập thông tin hợp lệ",
                 showConfirmButton: false,
                 timer: 1500,
             });

@@ -224,20 +224,20 @@
         <div class="popup-overlay"></div>
         <div class="popup">
             <span class="close-btn">&times;</span>
-            <form id="schedule-form">
+            <form id="schedule-form" novalidate>
                 <select name="class" id="">
                     <option value="GYM">GYM</option>
                     <option value="Zumba">Zumba</option>
                     <option value="Yoga">Yoga</option>
                 </select>
-                <input type="date" placeholder="Ngày tập" />
-                <input type="time" placeholder="Khung giờ" />
-                <input type="text" placeholder="Họ tên" />
-                <input type="email" placeholder="Email" />
+                <input type="date" name="date" placeholder="Ngày tập" />
+                <input type="time" name="time" placeholder="Khung giờ" />
+                <input type="text" name="name" placeholder="Họ tên" />
+                <input type="email" name="email" placeholder="Email" />
                 <button type="submit">Thêm lịch tập</button>
             </form>
         </div>
-        <div class="edit-popup popup">
+        <div class="edit-popup popup" novalidate>
             <span class="close-btn">&times;</span>
             <form id="edit-form">
                 <select name="class" id="edit-class">
@@ -245,10 +245,20 @@
                     <option value="Zumba">Zumba</option>
                     <option value="Yoga">Yoga</option>
                 </select>
-                <input type="date" id="edit-date" />
-                <input type="time" id="edit-time" />
-                <input type="text" id="edit-name" placeholder="Họ tên" />
-                <input type="email" id="edit-email" placeholder="Email" />
+                <input type="date" name="date" id="edit-date" />
+                <input type="time" name="time" id="edit-time" />
+                <input
+                    type="text"
+                    name="name"
+                    id="edit-name"
+                    placeholder="Họ tên"
+                />
+                <input
+                    type="email"
+                    name="email"
+                    id="edit-email"
+                    placeholder="Email"
+                />
                 <button type="submit">Cập nhật</button>
             </form>
         </div>

@@ -105,12 +105,12 @@ th {
     background: #f4f4f4;
 }
 .filter-btn{
-    background-color: skyblue;
+    background-color: rgb(39, 100, 153);
     color: white;
     padding: 10px;
     border-radius: 5px;
     border: none;
-    
+    cursor: pointer;
 }
 @media (max-width: 768px) {
     .filter-container {
