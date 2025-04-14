@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
             classId: ClassType.GYM,
             date: "2024-03-20",
             time: "09:00",
-            email: "xxxxxx123@gmail.com",
+            email: "bangbang123@gmail.com",
             createdAt: new Date("2024-03-19T08:00:00"),
             updatedAt: new Date("2024-03-19T08:00:00")
         },
@@ -125,10 +125,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     //     return true;
     // }
- 
+   
     function validateSchedule(schedule) {
-        const nameRegex = /^[A-Za-zÀ-ỹ\s]+$/;
-        if (!nameRegex.test(schedule.userId)) {
+        schedule.userId = schedule.userId.replace(/[^a-zA-ZÀ-ỹ\s]/g, '').trim();
+        if (!schedule.userId) {
             Swal.fire({
                 position: "top-center",
                 icon: "error",
@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 title: "Lịch học đã tồn tại",
                 showConfirmButton: false,
                 timer: 1500,
-            });
+            });  
             return false;
         }
     

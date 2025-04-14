@@ -35,6 +35,75 @@
             <div class="chart-container">
                 <canvas id="classChart"></canvas>
             </div>
+            <div class="edit-popup" id="editPopup" style="display: none">
+                <div class="popup-content">
+                    <h3>Sửa lịch tập</h3>
+                    <form id="editForm" class="edit-form">
+                        <input type="hidden" name="id" id="scheduleId" />
+                        <div>
+                            <label>Lớp học:</label>
+                            <select name="classId" id="editClassId">
+                                <option value="1">GYM</option>
+                                <option value="2">Zumba</option>
+                                <option value="3">Yoga</option>
+                            </select>
+                            <span class="error classId-error"></span>
+                        </div>
+                        <div>
+                            <label>Ngày tập:</label>
+                            <input type="date" name="date" id="editDate" />
+                            <span class="error date-error"></span>
+                        </div>
+                        <div>
+                            <label>Giờ tập:</label>
+                            <input type="time" name="time" id="editTime" />
+                            <span class="error time-error"></span>
+                        </div>
+                        <div>
+                            <label>Họ tên:</label>
+                            <input type="text" name="userId" id="editUserId" />
+                            <span class="error userId-error"></span>
+                        </div>
+                        <div>
+                            <label>Email:</label>
+                            <input type="email" name="email" id="editEmail" />
+                            <span class="error email-error"></span>
+                        </div>
+                        <div class="button-group">
+                            <button type="submit" class="save-btn">Lưu</button>
+                            <button
+                                type="button"
+                                class="cancel-btn"
+                                id="cancelEdit"
+                            >
+                                Hủy
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="delete-popup" id="deletePopup" style="display: none">
+                <div class="popup-content">
+                    <h3>Xác nhận xóa</h3>
+                    <p>Bạn có chắc chắn muốn xóa lịch tập này không?</p>
+                    <div class="button-group">
+                        <button
+                            type="button"
+                            class="delete-confirm-btn"
+                            id="confirmDelete"
+                        >
+                            Xóa
+                        </button>
+                        <button
+                            type="button"
+                            class="cancel-btn"
+                            id="cancelDelete"
+                        >
+                            Hủy
+                        </button>
+                    </div>
+                </div>
+            </div>
             <div class="filter-container">
                 <label for="class">Lớp học</label>
                 <select id="class">
@@ -65,7 +134,7 @@
                 </table>
             </div>
         </div>
-        <script></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="../../assets/js/dashboard.js"></script>
     </body>
